@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import Quiz from '../quiz/page';
+import Quizd from '../quizd/data';
 import Navbar from '../navbar/page';
 import { Container, Typography, Box, Paper, List, ListItem, ListItemText } from '@mui/material';
 
@@ -57,7 +57,7 @@ const TakeQuiz: React.FC = () => {
           <Paper elevation={3} style={{ padding: '2rem' }}>
             {quizzes.length > 0 ? (
               !submitted ? (
-                <Quiz 
+                <Quizd 
                   quizData={quizzes[currentQuizIndex]} 
                   onNext={handleNext} 
                   isLastQuestion={currentQuizIndex === quizzes.length - 1} 

@@ -1,16 +1,26 @@
+
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Button, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Box, Typography } from '@mui/material';
 
+interface QuizData {
+  question: string;
+  option1: string;
+  option2: string;
+  option3: string;
+  option4: string;
+  correctAnswer: string;
+}
+
 interface QuizProps {
-  quizData: any;
+  quizData: QuizData;
   onNext: (timeTaken: number, isCorrect: boolean) => void;
   isLastQuestion: boolean;
   onSubmit: (timeTaken: number, isCorrect: boolean) => void;
 }
 
 const Quiz: React.FC<QuizProps> = ({ quizData, onNext, isLastQuestion, onSubmit }) => {
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState<string>('');
   const [startTime, setStartTime] = useState<number>(Date.now());
   const [timeLeft, setTimeLeft] = useState<number>(30);
 
@@ -33,7 +43,7 @@ const Quiz: React.FC<QuizProps> = ({ quizData, onNext, isLastQuestion, onSubmit 
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [quizData]);
+  }, [quizData, isLastQuestion]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);

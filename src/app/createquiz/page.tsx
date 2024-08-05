@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { Container, Typography, Box, Paper } from '@mui/material';
-import QuizForm from '../quizform/page';
+import QuizForm from '../quizform/quizform';
 import Navbar from '../navbar/page';
 
 const CreateQuiz: React.FC = () => {
